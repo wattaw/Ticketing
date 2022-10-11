@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\CampBenefit;
-
 
 class CampBenefitTableSeeder extends Seeder
 {
@@ -19,7 +17,7 @@ class CampBenefitTableSeeder extends Seeder
         $campBenefits = [
             [
                 'camp_id' => 1,
-                'name' => 'Pro Techtack Kit'
+                'name' => 'Pro Techstack Kit'
             ],
             [
                 'camp_id' => 1,
@@ -61,12 +59,8 @@ class CampBenefitTableSeeder extends Seeder
                 'camp_id' => 2,
                 'name' => 'Offline Course Videos'
             ],
-            [
-                'camp_id' => 2,
-                'name' => 'Offline Course Videos'
-            ],
         ];
-    
+
         CampBenefit::insert($campBenefits);
     }
 }

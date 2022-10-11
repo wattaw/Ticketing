@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 
@@ -17,8 +16,8 @@ class AdminUserSeeder extends Seeder
     {
         User::create([
             'name' => 'admin',
-            'email' => 'dinofajar112@gmail.com',
-            'email_verified_at' => date('Y-m-d H:i:s',time()),
+            'email' => 'admin@ideacan.com',
+            'email_verified_at' => date('Y-m-d H:i:s', time()),
             'password' => \bcrypt('password'),
             'is_admin' => true
         ]);
