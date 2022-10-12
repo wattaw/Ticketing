@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('camps', function (Blueprint $table) {
+        Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('slug', 100);
-            $table->integer('price')->unsigned();
-            $table->timestamps();
+            $table->string('name',100);
+            $table->string('code', 5)->unique();
+            $table->string('description')->nullable();
+            $table->unsignedInteger('percentage');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -30,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('camps', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('discounts');
     }
 };

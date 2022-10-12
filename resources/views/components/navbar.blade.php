@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+{{-- <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="{{route('welcome')}}">
             <img src="{{asset('images/logo.png')}}" alt="">
@@ -36,7 +36,7 @@
                             </li>
                         @if (Auth::user()->is_admin)
                         <li>
-                            <a href="{{route('dashboard')}}" class="dropdown-item">Discount</a>
+                            <a href="{{route('admin.discount.index')}}" class="dropdown-item">Discount</a>
                         </li>
                         @endif
                             <li>
@@ -60,4 +60,4 @@
             @endauth
         </div>
     </div>
-</nav>
+</nav> --}}
