@@ -28,7 +28,7 @@ class Store extends FormRequest
             'name' => 'required|string',
             'code' => 'required|string|max:5|unique:discounts',
             'description' => 'nullable|string',
-            'percentage' => 'required|min:1|max:100|numeric'
+            'percentage' => 'required|min:1|max:100|numeric',
         ];
     }
 }
