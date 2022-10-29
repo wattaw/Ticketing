@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
 class Checkout extends Model
 {
@@ -45,6 +46,11 @@ class Checkout extends Model
      */
     public function Discount(): BelongsTo
     {
-        return $this->belongsTo(Discount::class,);
+        return $this->belongsTo(Discount::class);
     }
+
+    // public function Checkout(): BelongsTo
+    // {
+    //     return $this->belongsTo(Checkout::class);
+    // }
 }

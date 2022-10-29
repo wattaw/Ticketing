@@ -33,42 +33,42 @@
                                 @csrf
                                 <div class="mb-4">
                                     <label class="form-label">Full Name</label>
-                                    <input name="name" type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" value="{{Auth::user()->name}}" required />
+                                    <input name="name" type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" required />
                                     @if ($errors->has('name'))
                                         <p class="text-danger">{{$errors->first('name')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Email Address</label>
-                                    <input name="email" type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" value="{{Auth::user()->email}}" required />
+                                    <input name="email" type="email" class="form-control {{$errors->has('email') ? 'is-invalid' : ''}}" required />
                                     @if ($errors->has('email'))
                                         <p class="text-danger">{{$errors->first('email')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Occupation</label>
-                                    <input name="occupation" type="text" class="form-control {{$errors->has('occupation') ? 'is-invalid' : ''}}" value="{{old('occupation') ?: Auth::user()->occupation}}" required />
+                                    <input name="occupation" type="text" class="form-control {{$errors->has('occupation') ? 'is-invalid' : ''}}" required />
                                     @if ($errors->has('occupation'))
                                         <p class="text-danger">{{$errors->first('occupation')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Phone</label>
-                                    <input name="phone" type="text" class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}}" value="{{old('phone') ?: Auth::user()->phone}}" required />
+                                    <input name="phone" type="text" class="form-control {{$errors->has('phone') ? 'is-invalid' : ''}}" required />
                                     @if ($errors->has('phone'))
                                         <p class="text-danger">{{$errors->first('phone')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}" value="{{old('address') ?: Auth::user()->address}}" required />
+                                    <input name="address" type="text" class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}" required />
                                     @if ($errors->has('address'))
                                         <p class="text-danger">{{$errors->first('address')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Discount Promo</label>
-                                    <input name="discount" type="text" class="form-control {{$errors->has('discount') ? 'is-invalid' : ''}}" value="{{old('discount')}}"/>
+                                    <input name="discount" type="text" class="form-control {{$errors->has('discount') ? 'is-invalid' : ''}}"/>
                                     @if ($errors->has('discount'))
                                         <p class="text-danger">{{$errors->first('discount')}}</p>
                                     @endif

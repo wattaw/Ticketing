@@ -18,9 +18,10 @@ class Paid extends Mailable
      *
      * @return void
      */
-    public function __construct($checkout)
+    public function __construct($checkout, $transaction_status)
     {
         $this->checkout = $checkout;
+        $this->transaction_status = $transaction_status;
     }
 
     /**
@@ -31,7 +32,8 @@ class Paid extends Mailable
     public function build()
     {
         return $this->subject('Your Transaction Has Been Confirmed')->markdown('emails.checkout.paid', [
-            'checkout' => $this->checkout
+            'checkout' => $this->checkout,
+            'transaction_status' => $this->transaction_status
         ]);
     }
 }

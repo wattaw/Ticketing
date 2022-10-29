@@ -8,32 +8,32 @@
                     <div class="row">
                         <div class="col-lg-6 col-12 copywriting">
                             <p class="story">
-                                LEARN FROM EXPERT
+                                Proudly Present
                             </p>
                             <h1 class="header">
-                                Start Your <span class="text-purple">Developer <br> Journey</span> Today
+                                <span class="text-orange-500">Sidoarjo UMKMovement 1.0
                             </h1>
                             <p class="support">
-                                Our bootcamp is helping junior developers who <br> are really passionate in the programming.
+                                Event Meriah Enterpreneur Masyarakat Sidoarjo <br> Yang dimeriahkan oleh banyak artis.
                             </p>
                             <p class="cta">
                                 <a href="#" class="btn btn-master btn-primary">
-                                    Get Started
+                                    Buy Ticket
                                 </a>
                             </p>
                         </div>
                         <div class="col-lg-6 col-12 text-center">
                             <a href="#">
-                                <img src="{{asset('images/banner.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('images/logoumkm.png')}}" class="img-fluid" alt="">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row brands">
+            {{-- <div class="row brands">
                 <div class="col-lg-12 col-12 text-center">
                     <img src="{{asset('images/brands.png')}}" alt="">
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -173,9 +173,6 @@
         <div class="container">
             <div class="row pb-70">
                 <div class="col-lg-5 col-12 header-wrap copywriting">
-                    <p class="story">
-                        GOOD INVESTMENT
-                    </p>
                     <h2 class="primary-header text-white">
                         Start Your Journey
                     </h2>
@@ -262,7 +259,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{route('checkout.create', 'gila-belajar')}}" class="btn btn-master btn-primary w-100 mt-3">
+                                    <a href="{{route('checkout.create', 'UMKMMovement-Presale-1')}}" class="btn btn-master btn-primary w-100 mt-3">
                                         Take This Plan
                                     </a>
                                 </p>
@@ -308,7 +305,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{route('checkout.create', 'mulai-belajar')}}" class="btn btn-master btn-secondary w-100 mt-3">
+                                    <a href="{{route('checkout.create', 'UMKMMovement-Presale-2')}}" class="btn btn-master btn-secondary w-100 mt-3">
                                         Start With This Plan
                                     </a>
                                 </p>

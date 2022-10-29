@@ -47,11 +47,9 @@
                 </div>
             @else
                 <div class="d-flex">
-                    <a href="{{route('login')}}" class="btn btn-master btn-secondary me-3">
+                    <a href="{{route('login')}}" class="btn btn-master btn-primary">
                         Sign In
                     </a>
-                    <a href="/login" class="btn btn-master btn-primary">
-                        Sign Up
                     </a>
                 </div>
             @endauth

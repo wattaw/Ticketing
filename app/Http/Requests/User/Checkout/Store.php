@@ -12,10 +12,10 @@ class Store extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return Auth::check();
-    }
+    // public function authorize()
+    // {
+    //     return Auth::check(false);
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -27,7 +27,7 @@ class Store extends FormRequest
 
         return [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.Auth::id().',id',
+            'email' => 'required|email',
             'occupation' => 'required|string',
             'phone' => 'required|string',
             'address' => 'required|string',

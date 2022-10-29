@@ -18,5 +18,6 @@ class HomeController extends Controller
                 return redirect(route('user.dashboard'));
                 break;
         }
+        return redirect(route('welcome'));
     }
 }

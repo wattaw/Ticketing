@@ -1,5 +1,6 @@
 <?php
 
+use illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\CheckoutController;
@@ -8,6 +9,9 @@ use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
 use App\Http\Controllers\Admin\DiscountController as AdminDiscount;
+use App\Http\Controllers\Admin\QRController as AdminQR;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use SimpleSoftwareIO\QrCode\Generator;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +36,28 @@ Route::get('auth/google/callback', [UserController::class, 'handleProviderCallba
 Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
 Route::post('payment/success', [CheckoutController::class, 'midtransCallback']);
 
+// checkout nonUser
+Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
+Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
+
+    // QR Code Generator
+    Route::get('/QRCode', function(){
+        $qrcode = new Generator;
+        $qr =  $qrcode ->size(200)->generate(request()->get('CodeNumber'));
+        return view('admin.qrscan',[
+            'qr' => $qr
+        ]);
+    })->name('admin.qrscan');
+
 Route::middleware(['auth'])->group(function () {
     // checkout routes
-    Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success')->middleware('ensureUserRole:user');
-    Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create')->middleware('ensureUserRole:user');
-    Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store')->middleware('ensureUserRole:user');
+    // Route::get('checkout/success', [xCheckoutController::class, 'success'])->name('checkout.success');
+    // Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
+    // Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
+
+    //Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create')->middleware('ensureUserRole:user');
+    //Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store')->middleware('ensureUserRole:user');
 
     // dashboard
     Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
@@ -55,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
 
         // admin discount
         Route::resource('discount', AdminDiscount::class);
+
+        // // // admin qrcode
+        //  Route::get('qrcoba', [AdminQR::class]);
     });
 
 });
