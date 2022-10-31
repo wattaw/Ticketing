@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
 use App\Http\Controllers\Admin\DiscountController as AdminDiscount;
 use App\Http\Controllers\Admin\QRController as AdminQR;
+use App\Http\Controllers\DemoController;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use SimpleSoftwareIO\QrCode\Generator;
 
@@ -36,10 +37,15 @@ Route::get('auth/google/callback', [UserController::class, 'handleProviderCallba
 Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
 Route::post('payment/success', [CheckoutController::class, 'midtransCallback']);
 
+// Demo
+Route::get('demo',[DemoController::class]);
+Route::post('demo',[DemoController::class]);
+
+
 // checkout nonUser
 Route::get('checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
-Route::get('checkout/{camp:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
-Route::post('checkout/{camp}', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('checkout/{event:slug}', [CheckoutController::class, 'create'])->name('checkout.create');
+Route::post('checkout/{event}', [CheckoutController::class, 'store'])->name('checkout.store');
 
     // QR Code Generator
     Route::get('/QRCode', function(){

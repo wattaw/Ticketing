@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\Checkout\Store;
 use App\Mail\Checkout\AfterCheckout;
 use App\Mail\Checkout\Paid;
-use App\Models\Camp;
+use App\Models\Event;
 use App\Models\Discount;
 use App\Models\Checkout;
 use App\Models\User;
@@ -42,14 +42,14 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Camp $camp, Request $request)
+    public function create(Event $event, Request $request)
     {
-        if ($camp->isRegistered) {
-            $request->session()->flash('error', "You already registered on {$camp->title} camp.");
+        if ($event->isRegistered) {
+            $request->session()->flash('error', "You already registered on {$event->title}.");
             return redirect(route('user.dashboard'));
         }
         return view('checkout.create', [
-            'camp' => $camp
+            'event' => $event
         ]);
     }
 
@@ -59,7 +59,7 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Camp $camp, Checkout $checkout, User $user)
+    public function store(Store $request, Event $event, Checkout $checkout, User $user)
     {
         // return $request;
         // mapping request data
@@ -74,7 +74,7 @@ class CheckoutController extends Controller
         $user->address = $data['address'];
         $user->save();
         $data['user_id'] = $user['id'];
-        $data['camp_id'] = $camp->id;
+        $data['event_id'] = $event->id;
 
 
         // checkout discount
@@ -151,7 +151,7 @@ class CheckoutController extends Controller
     public function getSnapRedirect(Checkout $checkout)
     {
         $orderId = $checkout->id . '-' . Str::random(5);
-        $price = $checkout->Camp->price * 1000;
+        $price = $checkout->Event->price * 1000;
 
         $checkout->midtrans_booking_code = $orderId;
 
@@ -159,7 +159,7 @@ class CheckoutController extends Controller
             'id' => $orderId,
             'price' => $price,
             'quantity' => 1,
-            'name' => "Payment for {$checkout->Camp->title} Ticket"
+            'name' => "Payment for {$checkout->Event->title} Ticket"
         ];
 
 

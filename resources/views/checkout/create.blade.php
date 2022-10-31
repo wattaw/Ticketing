@@ -20,7 +20,7 @@
                             <div class="item-bootcamp">
                                 <img src="{{asset('images/item_bootcamp.png')}}" alt="" class="cover">
                                 <h1 class="package text-uppercase">
-                                    {{$camp->title}}
+                                    {{$event->title}}
                                 </h1>
                                 <p class="description">
                                     Bootcamp ini akan mengajak Anda untuk belajar penuh mulai dari pengenalan dasar sampai membangun sebuah projek asli
@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-lg-1 col-12"></div>
                         <div class="col-lg-6 col-12">
-                            <form action="{{route('checkout.store', $camp->id)}}" class="basic-form" method="POST">
+                            <form action="{{route('checkout.store', $event->id)}}" class="basic-form" method="POST">
                                 @csrf
                                 <div class="mb-4">
                                     <label class="form-label">Full Name</label>

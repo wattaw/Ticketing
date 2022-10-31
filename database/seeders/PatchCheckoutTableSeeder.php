@@ -17,7 +17,7 @@ class PatchCheckoutTableSeeder extends Seeder
         $checkouts = Checkout::whereTotal(0)->get();
         foreach($checkouts as $key => $checkout) {
             $checkout->update([
-                'total' => $checkout->Camp->price
+                'total' => $checkout->Event->price
             ]);
         }
     }

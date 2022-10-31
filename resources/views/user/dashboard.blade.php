@@ -24,7 +24,7 @@
                                 </td>
                                 <td>
                                     <p class="mb-2">
-                                        <strong>{{$checkout->Camp->title}}</strong>
+                                        <strong>{{$checkout->Event->title}}</strong>
                                     </p>
                                     <p>
                                         {{$checkout->created_at->format('M d, Y')}}
@@ -55,7 +55,7 @@
                         @empty
                             <tr>
                                 <td colspan="5">
-                                    <h3>No Camp Registered</h3>
+                                    <h3>No Event Registered</h3>
                                 </td>
                             </tr>
                         @endforelse

@@ -12,7 +12,7 @@ class Checkout extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'camp_id', 'payment_status', 'midtrans_url', 'midtrans_booking_code','discount_id','discount_percentage','total'];
+    protected $fillable = ['user_id', 'event_id', 'payment_status', 'midtrans_url', 'midtrans_booking_code','discount_id','discount_percentage','total'];
 
     public function setExpiredAttribute($value)
     {
@@ -20,13 +20,13 @@ class Checkout extends Model
     }
 
     /**
-     * Get the Camp that owns the Checkout
+     * Get the Event that owns the Checkout
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Camp(): BelongsTo
+    public function Event(): BelongsTo
     {
-        return $this->belongsTo(Camp::class);
+        return $this->belongsTo(Event::class);
     }
 
     /**

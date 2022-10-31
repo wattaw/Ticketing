@@ -26,7 +26,7 @@
                                 @forelse ($checkouts as $checkout)
                                     <tr>
                                         <td>{{$checkout->User->name}}</td>
-                                        <td>{{$checkout->Camp->title}}</td>
+                                        <td>{{$checkout->Event->title}}</td>
                                         <td>Rp. {{$checkout->total}}
                                         @if($checkout->discount_id)
                                             <span class="badge bg-success">Disc {{$checkout->discount_percentage}}%</span>
