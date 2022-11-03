@@ -1,0 +1,8 @@
+.eventbanner{
+    /* background: rgba(0, 0, 0, .45) url(img/eventhero.jpg); */
+    background: rgba(0, 0, 0, 0.65) url(https://upload.wikimedia.org/wikipedia/commons/1/15/Alun-alun-sidoarjo.jpg);
+    background-blend-mode: multiply;
+}
+.inputtiket{
+    width: 100px;
+}

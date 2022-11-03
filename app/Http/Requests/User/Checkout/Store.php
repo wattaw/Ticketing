@@ -3,7 +3,6 @@
 namespace App\Http\Requests\User\Checkout;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Auth;
 
 class Store extends FormRequest
 {
@@ -28,7 +27,7 @@ class Store extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|email',
-            'occupation' => 'required|string',
+            'occupation' => 'nullable|string',
             'phone' => 'required|string',
             'address' => 'required|string',
             'discount' => 'nullable|string|exists:discounts,code,deleted_at,NULL'

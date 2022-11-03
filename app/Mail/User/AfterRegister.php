@@ -30,7 +30,7 @@ class AfterRegister extends Mailable
      */
     public function build()
     {
-        return $this->subject('Order for Event')->markdown('emails.user.afterRegister', [
+        return $this->subject('Registered to IdeaCan')->markdown('emails.user.afterRegister', [
             'user' => $this->user
         ]);
     }

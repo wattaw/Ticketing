@@ -3,7 +3,7 @@
 namespace App\Http\Requests\Admin\Discount;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class Update extends FormRequest
 {

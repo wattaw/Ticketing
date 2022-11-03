@@ -14,7 +14,9 @@
                                 <span class="text-orange-500">Sidoarjo UMKMovement 1.0
                             </h1>
                             <p class="support">
-                                Event Meriah Enterpreneur Masyarakat Sidoarjo <br> Yang dimeriahkan oleh banyak artis.
+                                Event Meriah Enterpreneur Masyarakat Sidoarjo
+                                <br> 
+                                Yang dimeriahkan oleh banyak artis.
                             </p>
                             <p class="cta">
                                 <a href="#" class="btn btn-master btn-primary">
@@ -44,7 +46,7 @@
             <div class="row text-center pb-70">
                 <div class="col-lg-12 col-12 header-wrap">
                     <p class="story">
-                        OUR SUPER BENEFITS
+                        OUR COLLABORATION
                     </p>
                     <h2 class="primary-header">
                         Learn Faster & Better
@@ -52,47 +54,26 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="item-benefit">
-                        <img src="{{asset('images/ic_globe.png')}}" class="icon" alt="">
+                        <img src="{{asset('images/gemes02.png')}}" class="icon" alt="">
                         <h3 class="title">
-                            Diversity
+                            Gemas
                         </h3>
                         <p class="support">
-                            Learn from anyone around the <br> world and get a new skills
+                            Gemas adalah Gerakan Masyarakat Entrepreneur Sidoarjo yang diinisiasi oleh Pemuda Sidoarjo Aulia Giovanni Kadarsan. Gerakan ini berangkat dari inisiatif beliau yang melihat pergerakan UMKM dan ekonomi culture di Sidoarjo yang kurang bertumbuh secara maksimal.
+
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="item-benefit">
-                        <img src="{{asset('images/ic_globe-1.png')}}" class="icon" alt="">
+                        <img src="{{asset('images/logo.png')}}" class="icon" alt="">
                         <h3 class="title">
                             A.I Guideline
                         </h3>
                         <p class="support">
                             Lara will help you to choose <br> which path that suitable for you
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-12">
-                    <div class="item-benefit">
-                        <img src="{{asset('images/ic_globe-2.png')}}" class="icon" alt="">
-                        <h3 class="title">
-                            1-1 Mentoring
-                        </h3>
-                        <p class="support">
-                            We will ensure that you will get <br> what you really do need
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-12">
-                    <div class="item-benefit">
-                        <img src="{{asset('images/ic_globe-3.png')}}" class="icon" alt="">
-                        <h3 class="title">
-                            Future Job
-                        </h3>
-                        <p class="support">
-                            Get your dream job in your dream <br> company together with us
                         </p>
                     </div>
                 </div>
@@ -104,14 +85,14 @@
         <div class="container">
             <div class="row item-step pb-70">
                 <div class="col-lg-6 col-12 text-center">
-                    <img src="{{asset('images/step1.png')}}" class="cover" alt="">
+                    <img src="{{asset('images/vierratale01.jpg')}}" class="cover" alt="">
                 </div>
                 <div class="col-lg-6 col-12 text-left copywriting">
                     <p class="story">
                         BETTER CAREER
                     </p>
                     <h2 class="primary-header">
-                        Prepare The Journey
+                        Vierratale
                     </h2>
                     <p class="support">
                         Learn from anyone around the <br> world and get a new skills
@@ -141,13 +122,13 @@
                     </p>
                 </div>
                 <div class="col-lg-6 col-12 text-center">
-                    <img src="{{asset('images/step2.png')}}" class="cover" alt="">
+                    <img src="{{asset('images/soegibornean.jpeg')}}" class="cover" alt="">
                 </div>
 
             </div>
             <div class="row item-step">
                 <div class="col-lg-6 col-12 text-center">
-                    <img src="{{asset('images/step3.png')}}" class="cover" alt="">
+                    <img src="{{asset('images/ungu.jpg')}}" class="cover" alt="">
                 </div>
                 <div class="col-lg-6 col-12 text-left copywriting">
                     <p class="story">
@@ -259,7 +240,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{route('checkout.create', 'UMKMMovement-1-0')}}" class="btn btn-master btn-primary w-100 mt-3">
+                                    <a href="{{route('checkout.create', 'UMKMMovement-Presale-1')}}" class="btn btn-master btn-primary w-100 mt-3">
                                         Take This Plan
                                     </a>
                                 </p>
@@ -305,7 +286,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <p>
-                                    <a href="{{route('checkout.create', 'UMKMMovement-1-0')}}" class="btn btn-master btn-secondary w-100 mt-3">
+                                    <a href="{{route('checkout.create', 'UMKMMovement-Presale-1')}}" class="btn btn-master btn-secondary w-100 mt-3">
                                         Start With This Plan
                                     </a>
                                 </p>

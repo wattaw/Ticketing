@@ -22,11 +22,12 @@ class DemoController extends Controller
         return $request->all();
     }
 
-    public function demo(){
-        $events = Event::all();
+    public function demo()
+    {
         $event_details = EventDetail::all();
-        return view('demo',['event_details' => $event_details]);
-        
+        return view(
+            'demo',
+            ['event_details' => $event_details]
+        );
     }
-
 }

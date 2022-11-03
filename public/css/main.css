@@ -122,9 +122,9 @@ body {
 
 .pricing {
   margin-top: 100px;
-  background: #4D1DAB;
+  background: #3a73dd;
   padding-top: 70px;
-  max-height: 620px;
+  max-height: 700px;
 }
 
 .pricing .copywriting {
@@ -177,6 +177,11 @@ body {
 
 .pricing .paket-biasa {
   min-height: 453px;
+}
+
+.tombol-disabled{
+  z-index: -1;
+  pointer-events: none;
 }
 
 .clear {
@@ -257,6 +262,10 @@ body {
 
 .pb-70 {
   padding-bottom: 70px;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
 }
 
 .header-wrap .primary-header {
@@ -374,5 +383,16 @@ body {
 
 .navbar .navbar-brand img {
   height: 42px;
+}
+
+.eventbanner{
+  background: rgba(0, 0, 0, .45) url(images/eventhero.jpg);
+  /* background: rgba(0, 0, 0, 0.65) url(https://upload.wikimedia.org/wikipedia/commons/1/15/Alun-alun-sidoarjo.jpg);
+  background-blend-mode: multiply;
+  */
+}
+
+.inputtiket{
+  width: 100px;
 }
 /*# sourceMappingURL=main.css.map */

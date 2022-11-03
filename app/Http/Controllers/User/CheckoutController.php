@@ -10,6 +10,7 @@ use App\Mail\Checkout\Paid;
 use App\Models\Event;
 use App\Models\Discount;
 use App\Models\Checkout;
+use App\Models\EventDetail;
 use App\Models\User;
 use Auth;
 use Mail;
@@ -42,14 +43,16 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Event $event, Request $request)
+    public function create(Event $event, Request $request,EventDetail $event_details)
     {
         if ($event->isRegistered) {
             $request->session()->flash('error', "You already registered on {$event->title}.");
             return redirect(route('user.dashboard'));
         }
+        $event_details = EventDetail::all();
         return view('checkout.create', [
-            'event' => $event
+            'event' => $event,
+            'event_details' => $event_details
         ]);
     }
 
@@ -59,9 +62,8 @@ class CheckoutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Event $event, Checkout $checkout, User $user)
+    public function store(Store $request, Event $event, Checkout $checkout, User $user, EventDetail $event_detail)
     {
-        // return $request;
         // mapping request data
         $data = $request->all();
         //$data['user_id'] = $checkout->user_id;
@@ -72,7 +74,9 @@ class CheckoutController extends Controller
         $user->occupation = $data['occupation'];
         $user->phone = $data['phone'];
         $user->address = $data['address'];
+        // $user->price = $event_detail->price;
         $user->save();
+        $data['qty']= $request->qty;
         $data['user_id'] = $user['id'];
         $data['event_id'] = $event->id;
 
@@ -150,23 +154,48 @@ class CheckoutController extends Controller
      */
     public function getSnapRedirect(Checkout $checkout)
     {
+        // dd($checkout);
         $orderId = $checkout->id . '-' . Str::random(5);
-        $price = $checkout->Event->price * 1000;
+        $price = $checkout->Event->price;
 
         $checkout->midtrans_booking_code = $orderId;
 
         $item_details[] = [
             'id' => $orderId,
             'price' => $price,
-            'quantity' => 1,
+            'quantity' => $checkout->qty,
             'name' => "Payment for {$checkout->Event->title} Ticket"
         ];
+        
+        $gratisan = 0;
+        if ($checkout->qty >= 5){
+            $checkout->bonus = 1;
+            $gratisan += $gratisan;
+            $item_details[] = [
+                'id' => $orderId,
+                'price' => 0,
+                'quantity' => $checkout->bonus,
+                'name' => "Bonus ticket kelipatan 5"
+            ];
+        }
 
+        if ($checkout->qty == 10){
+            $checkout->bonus = 2;
+            $gratisan += $gratisan;
+            $item_details[] = [
+                'id' => $orderId,
+                'price' => 0,
+                'quantity' => $checkout->bonus,
+                'name' => "Bonus ticket kelipatan 5"
+            ];
+        }
+
+        
 
 
         $discountPrice = 0;
         if ($checkout->Discount) {
-            $discountPrice = $price * $checkout->discount_percentage / 100;
+            $discountPrice = $price * $checkout->qty * $checkout->discount_percentage / 100;
             $item_details[] = [
                 'id' => $checkout->Discount->code,
                 'price' => -$discountPrice,
@@ -175,7 +204,14 @@ class CheckoutController extends Controller
             ];
         }
 
-        $total = $price - $discountPrice;
+        $pajak[] = [
+            'id' => $orderId,
+            'price' => 5000,
+            'quantity' => 1,
+            'name' => "Tax & Services"
+        ];
+
+        $total = $price * $checkout->qty - $discountPrice + $pajak;
         $transaction_details = [
             'order_id' => $orderId,
             'gross_amount' => $price
@@ -238,12 +274,14 @@ class CheckoutController extends Controller
                 $checkout->payment_status = 'pending';
             } else if ($fraud == 'accept') {
                 // TODO Set payment status in merchant's database to 'success'
-                //sending email
-                $image = \QrCode::format('svg')
-                    ->size(200)->errorCorrection('H')
-                    ->generate('$checkout->midtrans_booking_code');
-                $output_file = '/img/qr-code/' . $checkout->midtrans_booking_code . '.svg';
-                \Storage::disk('public')->put($output_file, $image);
+
+                // //sending email
+
+                // $image = \QrCode::format('svg')
+                //     ->size(200)->errorCorrection('H')
+                //     ->generate('$checkout->midtrans_booking_code');
+                // $output_file = '/img/qr-code/' . $checkout->midtrans_booking_code . '.svg';
+                // \Storage::disk('public')->put($output_file, $image);
 
                 Mail::to($checkout->user->email)
                     ->send(new Paid($checkout, $transaction_status));
@@ -263,6 +301,8 @@ class CheckoutController extends Controller
         } else if ($transaction_status == 'settlement') {
             // TODO set payment status in merchant's database to 'Settlement'
             $checkout->payment_status = 'paid';
+            Mail::to($checkout->user->email)
+                    ->send(new Paid($checkout, $transaction_status));
         } else if ($transaction_status == 'pending') {
             // TODO set payment status in merchant's database to 'Pending'
             $checkout->payment_status = 'pending';

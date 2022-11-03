@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Models;
-
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
 
+
 class Checkout extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'event_id', 'payment_status', 'midtrans_url', 'midtrans_booking_code','discount_id','discount_percentage','total'];
+    protected $fillable = ['user_id', 'event_id', 'payment_status', 'midtrans_url','price', 'midtrans_booking_code','discount_id','discount_percentage','qty','total'];
 
     public function setExpiredAttribute($value)
     {
@@ -27,6 +28,16 @@ class Checkout extends Model
     public function Event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
+    }
+
+    public function Validation(): BelongsTo
+    {
+        return $this->belongsTo(Validation::class);
+    }
+
+    public function EventDetail(): BelongsTo
+    {
+        return $this->belongsTo(EventDetail::class);
     }
 
     /**
@@ -49,8 +60,4 @@ class Checkout extends Model
         return $this->belongsTo(Discount::class);
     }
 
-    // public function Checkout(): BelongsTo
-    // {
-    //     return $this->belongsTo(Checkout::class);
-    // }
 }
